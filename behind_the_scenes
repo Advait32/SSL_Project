@@ -1,20 +1,35 @@
 # SSL_project_final
+Frontend
+------------SIGNUP-----------------------
+It is performed with help of JWT Token , It has a form which take formfield  username , password , first_name , last_name and create a user profile in backend and 
+now user can acess our app
+------------LOGIN------------------------
+This functionality also use JWT Token , User fills his details in form and post request is made if users detail are present then user is allowed to use other 
+functionality
+------------FILEUPLOAD-------------------
+This take a .zip file as input and extract files in .zip file to a folder of name same as zip file in Media folder on clicking SUBMIT button . On clicking Process 
+button the folder name is send via POST request and then we process our file using logic given in logic.py
+
 ------------LOGIC------------------------
 
-main idea/algorithm used is the winnowing algorithm .This algorithm is based on the following research paperhttps://theory.stanford.edu/~aiken/publications/papers/sigmod03.pdf
+main idea/algorithm used is the winnowing algorithm .This algorithm is based on the following research paper
+ https://theory.stanford.edu/~aiken/publications/papers/sigmod03.pdf
 
 ---------------FUNCTIONS------------------------------
 removechar:
 removes unnecessary keyword "import" and '(' and ')' so that plagiarism can be detected more easily
 -------------------------------------------------------
 tokenize:
-uses the pygments module to break the text in a file into it components such as whitespaces,commas , variables,strings, functions and remove or reduce unnecessary text. For eg ,all whitespaces and commas are removed, all variables are replaced by a single letter n,similarly for strings and functions.This ensures that simply changing variable names still gets accounted for
+uses the pygments module to break the text in a file into it components such as whitespaces,commas , variables,strings, functions and remove or reduce unnecessary 
+text. For eg ,all whitespaces and commas are removed, all variables are replaced by a single letter n,similarly for strings and functions.This ensures that simply 
+changing variable names still gets accounted for
 --------------------------------------------------------
 toText:
 simply gives the "cleaned" text i.e changing the original string to a more suitable form
 --------------------------------------------------------
 kgrams:
-Divides the cleaned text into k-grams that is into substrings of length k.Along with this,it stores the hash value of each k-gram along with their initial and final positions in cleaned text,which can indirectly be used to mark the original text.
+Divides the cleaned text into k-grams that is into substrings of length k.Along with this,it stores the hash value of each k-gram along with their initial and final 
+positions in cleaned text,which can indirectly be used to mark the original text.
 ---------------------------------------------------------
 minIndex:
 gives the index of the fingerprint of a given window.Actual index can be derived by adding the position of the window in cleaned text.
@@ -23,10 +38,14 @@ fingerprints:
 Creates a list of fingerprints. Where a fingerprint is the hash with the least value in a given window , along with start and end index.It takes a 'kgrams' as input
 -----------------------------------------------------------
 plagiarismcheck:
-The core function in this program.Takes in 2 files as input, tokenizes them,and creates fingerprints of the cleaned text.Similarly for the second file. Then it checks whether any fingerprints are same for the two files.If so then it adds them to the 'points' list which basically is a list of subcode,which are plagiarised.New code basically takes the intersection of the original code and the plagiarised points and highlights them.Then, plagcount is ratio of overlapping characters and total characters.
+The core function in this program.Takes in 2 files as input, tokenizes them,and creates fingerprints of the cleaned text.Similarly for the second file. Then it 
+checks whether any fingerprints are same for the two files.If so then it adds them to the 'points' list which basically is a list of subcode,which are plagiarised.
+New code basically takes the intersection of the original code and the plagiarised points and highlights them.Then, plagcount is ratio of overlapping characters and 
+total characters.
 ------------------------------------------------------------
 plagiarised_ratio:
-this follows a different algorithm.It simply checks subsequences of the two files and calculates ratio using the Sequencematcher module in difflib.this is in case small substrings are ocpied which is nt detected by the winnowing algorithm.
+this follows a different algorithm.It simply checks subsequences of the two files and calculates ratio using the Sequencematcher module in difflib.this is in case 
+small substrings are ocpied which is nt detected by the winnowing algorithm.
 ------------------------------------------------------------
 bag of words:
 This uses the principle underlying bag of words.It checks how many time each word occured in a given file.Then it stores it into a vector and calculates the cosine of angle between these vectors.
