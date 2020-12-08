@@ -1,0 +1,24 @@
+.input-field col s12{
+   margin-top:100px;
+}
+
+.card-content white-text{
+    margin-top: 250px;
+}
+
+
+.card deep-purple darken-2{
+    text-decoration-color: aliceblue;
+    margin-bottom: 50px;
+    text-align: center;
+
+}
+
+.le{
+    text-decoration-color: aliceblue;
+    color: aliceblue;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: larger;
+    margin-top: 100px;
+}
